@@ -26,4 +26,4 @@ class form_info(forms.ModelForm):
 class form_details(forms.ModelForm):
     class Meta():
         model = model_assign
-        fields = ['Ticket','request_status','request_remark']
+        fields = ['request_status','request_remark']
