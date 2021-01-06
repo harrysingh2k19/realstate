@@ -1,0 +1,80 @@
+{% extends 'base.html'  %}
+{% block content %}
+  <div class="box_div mt-5">
+    <div class="d-lg-flex justify-content-center " >
+      <div class=" form_back mt-5 bg-light round_div  mb-5">
+        <div class="text-center mb-3">
+          <div class=" text-center p-3">
+{% if admin %}
+                <div class="text-center">
+                  <h3>All Tickets Pending for work</h3>
+                </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Request Id </th>
+                  <th scope="col">Request Type</th>
+                  <th scope="col">Request State</th>
+                  <th scope="col">Request City</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Request Date</th>
+                  <th scope="col">Request Assign</th>
+                  <th scope="col">Request Status</th>
+
+                </tr>
+              </thead>
+              <tbody>
+            {% for article in user_data %}
+                <tr>
+                  <th scope="row"><a href="{% url 'details' article.id  %}"> {{article.id}} </a> </th>
+                  <td>{{article.request_type}}</td>
+                  <td>{{article.request_states}}</td>
+                  <td>{{article.request_city}}</td>
+                  <td>{{article.request_desc}}</td>
+                  <td>{{article.request_date}}</td>
+                  <td>{{article.request_status}}</td>
+                  <td>Null</td>
+                  <td>Pending</td>
+
+                </tr>
+            {% endfor %}
+              </tbody>
+            </table>
+
+{% else  %}
+  {% if user_data %}
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Request Id </th>
+                    <th scope="col">Request Type</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Request Date</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+      {% for article in user_data %}
+                  <tr>
+                    <th scope="row"><a href="{% url 'details' article.id  %}"> {{article.id}} </a> </th>
+                    <td>{{article.request_type}}</td>
+                    <td>{{article.request_desc}}</td>
+                    <td>{{article.request_date}}</td>
+                  </tr>
+      {% endfor %}
+                </tbody>
+              </table>
+    {% else %}
+              <div class="alert alert-danger" role="alert">
+                <h1> You don't have any data to show </h1>
+              </div>
+    {% endif%}
+            <a href="{% url 'new_request' %}"><input type="submit" class="btn btn-primary p-2" style="border-radius : 50%;"   name="" value="New request"></a>
+          </div>
+{% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock  %}

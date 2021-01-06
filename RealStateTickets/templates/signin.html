@@ -1,0 +1,55 @@
+{% extends 'base.html'  %}
+{% block content %}
+  <div class="box_div mt-5">
+    <div class="d-flex justify-content-center " >
+      <div class="col-lg-5 col-sm-5 col-md-5 form_back mt-5 bg-light round_div p-5 mb-5">
+        <div class="text-center mb-3">
+          <h1>Login</h1><br>
+          {{ error }}
+          <form  method="post" >
+            {% csrf_token %}
+            <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" class="form-control" id="username">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" id="password">
+                    </div>
+            <div class=" text-center p-3">
+              <input type="submit" class="btn btn-primary" name="" value="Login">
+            </div>
+          </form>
+        </div>
+        <br>
+        <a href="{% url 'signup'%}">Register </a> here if you don't have any account
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="d-flex justify-content-center " >
+    <div class="col-lg-5 col-sm-5 col-md-5 form_back mt-5 bg-light round_div p-5 mb-5">
+      <div class="text-center mb-3">
+      <h1>Login Here</h1><br>
+      </div>
+      <div >
+          {{ error }}
+        <form  method="post" >
+          {% csrf_token %}
+          <div class="form-group">
+                      <label for="username">Username</label>
+                      <input type="text" name="username" class="form-control" id="username">
+                  </div>
+                  <div class="form-group">
+                      <label for="password">Password</label>
+                      <input type="password" name="password" class="form-control" id="password">
+                  </div>
+          <div class=" text-center p-3">
+            <input type="submit" class="btn btn-primary" name="" value="Login">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div> -->
+
+{% endblock  %}

@@ -1,0 +1,46 @@
+{% extends 'base.html'  %}
+{% load static %}
+{% block content %}
+
+<div class="box_div">
+{% if register %}
+<div class="d-flex justify-content-center " >
+  <div class="col-lg-5 col-sm-5 col-md-5 form_back mt-5 bg-light round_div p-5 mb-5">
+    {% if request.user.is_authenticated %}
+    <div class="text-center mb-3">
+    <h1>You Are Registered User</h1><br>
+    </div>
+    {% endif %}
+    <div >
+      <form  method="post" >
+        {% csrf_token %}
+
+        {{ user_form.as_p }}
+        <div class=" text-center p-3">
+          <input type="submit" class="btn btn-primary" name="" value="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="d-flex justify-content-center " >
+  <div class="col-lg-5 col-sm-5 col-md-5 form_back mt-5 bg-light round_div p-5 mb-5">
+    <div class="text-center mb-3">
+    <h1>Register Your Ticket </h1><br>
+    </div>
+    <div >
+      <form  method="post" >
+        {% csrf_token %}
+
+        {{ user_form.as_p }}
+        <div class=" text-center p-3">
+          <input type="submit" class="btn btn-primary" name="" value="submit">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endif %}
+</div>
+{% endblock  %}

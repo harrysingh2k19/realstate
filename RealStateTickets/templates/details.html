@@ -1,0 +1,92 @@
+</td><tr>{% extends 'base.html'  %}
+{% block content %}
+  <div class="box_div mt-5">
+    <div class="d-lg-flex justify-content-center " >
+      <div class=" form_back mt-5 bg-light round_div  mb-5">
+        <div class="text-center mb-3">
+          <div class=" text-center p-3">
+{% if admin %}
+                <div class="text-center">
+                  <h3>All Tickets Pending for work</h3>
+                </div>
+                <table class="table table-striped">
+                  <thead
+                {% for article in user_data %}
+                <tr><th scole="col">Request Type        </th><td> {{article.request_type}}</td>
+                </tr>
+                <tr><th scole="col">Request Description </th><td> {{article.request_desc}}</td>
+                </tr>
+                <tr><th scole="col">Request City        </th><td> {{article.request_city}}</td>
+                </tr>
+                <tr><th scole="col">Request State       </th><td> {{article.request_states}}</td>
+                </tr>
+                <tr><th scole="col">Request Pincode        </th><td> {{article.request_pincode}}</td>
+                </tr>
+                <tr><th scole="col">Request Number      </th><td> {{article.request_number}}</td>
+                </tr>
+              </thead>
+            </table>
+                <form  method="post">
+                  <table>
+                      <thead>
+                        {% csrf_token %}
+                        {{ user_form.as_table }}
+                        {% endfor %}
+                      </thead>
+                  </table>
+                  <div class=" text-center p-3">
+                    <input type="submit" class="btn btn-primary" name="" value="submit">
+                  </div>
+                </form>
+
+
+{% else  %}
+  {% if user_data %}
+              <table class="table table-striped">
+                <thead>
+      {% for article in user_data %}
+                  <tr><th scole="col">Request Type        </th><td> {{article.request_type}}</td>
+                  </tr>
+                  <tr><th scole="col">Request Description </th><td> {{article.request_desc}}</td>
+                  </tr>
+                  <tr><th scole="col">Request City        </th><td> {{article.request_city}}</td>
+                  </tr>
+                  <tr><th scole="col">Request State       </th><td> {{article.request_states}}</td>
+                  </tr>
+                  <tr><th scole="col">Request Pincode        </th><td> {{article.request_pincode}}</td>
+                  </tr>
+                  <tr><th scole="col">Request Number      </th><td> {{article.request_number}}</td>
+                  </tr>
+      {% endfor %}
+      {% for article in user_data2 %}
+                  <tr><th scole="col">Request Status      </th><td> {{article.request_status}}</td>
+                  </tr>
+                  <tr><th scole="col">Request Remark      </th><td> {{article.request_remark}}</td>
+                  </tr>
+                  <tr><th scole="col">Request Assign      </th><td> {{article.request_assigned}}</td>
+                  </tr>
+
+
+     {% endfor %}
+                 <tr><th scole="col">Request Status      </th><td> Pening</td>
+                 </tr>
+                 <tr><th scole="col">Request Remark      </th><td>Null</td>
+                 </tr>
+                 <tr><th scole="col">Request Assign      </th><td> Null</td>
+                 </tr>
+                </thead>
+              </table>
+  {% else %}
+              <div class="alert alert-danger" role="alert">
+                <h1> You don't have any data to show </h1>
+              </div>
+  {% endif%}
+            <a href="{% url 'new_request' %}"><input type="submit" class="btn btn-primary p-2" style="border-radius : 50%;"   name="" value="New request"></a>
+          </div>
+{% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock  %}
