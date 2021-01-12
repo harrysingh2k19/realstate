@@ -18,6 +18,8 @@ class model_requests(models.Model):
 
 class model_admin(models.Model):
     user = models.ForeignKey(User, on_delete= models.CASCADE)
+    def __str__(self):
+        return str(self.user)
 
 
 class model_info(models.Model):
@@ -30,13 +32,14 @@ class model_info(models.Model):
     request_states = models.ForeignKey(model_states, on_delete= models.CASCADE)
     request_ccode = models.CharField(max_length =13,null =True)
     request_number = models.CharField(max_length =13,null =True)
-    
+    request_status = models.ForeignKey(model_status, on_delete= models.CASCADE, default ='Pending')
+    request_remark = models.TextField(null=True)
+    request_assigned = models.ForeignKey(model_admin, on_delete=models.CASCADE, null = True)
+
     def __str__(self):
         return self.request_desc
 
 
 class model_assign(models.Model):
-    Ticket = models.ForeignKey(model_info, on_delete=models.CASCADE,  null = True)
     request_status = models.ForeignKey(model_status, on_delete= models.CASCADE, default ='Pending')
     request_remark = models.TextField(null=True)
-    request_assigned = models.ForeignKey(model_admin, on_delete=models.CASCADE, null = True)
