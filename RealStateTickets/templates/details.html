@@ -57,23 +57,13 @@
                   </tr>
                   <tr><th scole="col">Request Number      </th><td> {{article.request_number}}</td>
                   </tr>
-      {% endfor %}
-      {% for article in user_data2 %}
                   <tr><th scole="col">Request Status      </th><td> {{article.request_status}}</td>
                   </tr>
                   <tr><th scole="col">Request Remark      </th><td> {{article.request_remark}}</td>
                   </tr>
                   <tr><th scole="col">Request Assign      </th><td> {{article.request_assigned}}</td>
                   </tr>
-
-
      {% endfor %}
-                 <tr><th scole="col">Request Status      </th><td> Pening</td>
-                 </tr>
-                 <tr><th scole="col">Request Remark      </th><td>Null</td>
-                 </tr>
-                 <tr><th scole="col">Request Assign      </th><td> Null</td>
-                 </tr>
                 </thead>
               </table>
   {% else %}
