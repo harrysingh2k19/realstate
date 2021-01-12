@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
-from .models import model_info, model_requests, model_assign
+from .models import model_info, model_requests, model_assign, model_status
 
 class form_user(forms.ModelForm):
     class Meta():
@@ -23,7 +23,7 @@ class form_info(forms.ModelForm):
         model = model_info
         fields = ['request_type','request_desc','request_city','request_states','request_pincode','request_ccode','request_number']
 
-class form_details(forms.ModelForm):
+class form_details(forms.ModelForm):    
     class Meta():
         model = model_assign
-        fields = ['request_status','request_remark']
+        fields = '__all__'
