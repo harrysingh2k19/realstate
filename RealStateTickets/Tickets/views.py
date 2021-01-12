@@ -63,10 +63,8 @@ def dashboard(request):
         if model_admin.objects.filter(user=request.user): #Admin
             user_data = model_info.objects.all()
             return render(request, 'dashboard.html',{'user_data':user_data, 'admin':True})
-            # return HttpResponse("bhai ho nhi raha h " )
         else:# for genral user
             user_data = model_info.objects.filter(user=request.user)
-            print(len(user_data))
             if len(user_data)==0:
                 return render(request, 'dashboard.html',{'user_data':False})
             else:
@@ -75,39 +73,11 @@ def dashboard(request):
     else:
         return redirect("index")
 
-# def details(request, pk):
-#     if request.user.is_authenticated :
-#         if request.method == 'GET':
-#             if model_info.objects.all().filter(id =pk ):# For Admin
-#                 if model_admin.objects.filter(user=request.user):
-#                     article = model_info.objects.all().filter(id =pk )
-#                     return render(request, 'details.html',{'user_data':article, 'admin':True,'user_form':form_details})
-#                 else: # user
-#                     article = model_info.objects.all().filter(id =pk )
-#                     return render(request, 'details.html',{'user_data':article, 'admin':False})
-#             else:
-#                 return render(request, 'dashboard.html',{'user_data':False, 'admin':True})
-#         elif request.method == 'Post' :
-#             print("post to h bhai")
-#             user_input = form_info(data=request.POST)
-#             if user_input.is_valid():
-#                 print("bhai aaya to shi hu" )
-#                 user = user_input.save(commit=False)
-#                 user.Assign = request.user
-#                 user.save()
-#                 return HttpResponse("Bhai Game ho gaya")
-#             else:
-#                 return HttpResponse("Bhai Game ho gaya")
-#
-#     else:
-#         return HttpResponse("Bhai Game ho gaya")
-
 def details(request, pk):
     if request.method == 'GET':
         if model_info.objects.all().filter(id =pk ):# For Admin
             if model_admin.objects.filter(user=request.user):
                 article = model_info.objects.all().filter(id =pk )
-                for a in article : print(a.id)
                 return render(request, 'details.html',{'user_data':article, 'admin':True,'user_form':form_details})
             else: # user
                 article = model_info.objects.all().filter(id =pk )
@@ -116,21 +86,19 @@ def details(request, pk):
         else:
             return render(request, 'dashboard.html',{'user_data':False, 'admin':True})
     else :
-        print("post to h bhai")
-        post = dict(request.POST)
-        article = model_info.objects.all().filter(id =pk )
-        for a in article : post['Ticket'] = a.id
-        post['request_assigned'] =request.user
-        user_input = form_details(data = post)
+        user_input = form_details(data=request.POST)
         if user_input.is_valid():
-            print("bhai aaya to shi hu" )
-            user = user_input.save(commit=False)
-            user.Assign = request.user
-            user.save()
+            article = model_info.objects.all().filter(id =pk )
+            for a in article:
+                a.request_status = user_input.cleaned_data['request_status']
+                a.request_remark = user_input.cleaned_data['request_remark']
+                for b in model_admin.objects.filter(user=request.user):
+                    a.request_assigned = b
+                a.save()
             return redirect("dashboard")
         else:
-            print(user_input.errors)
             return redirect("dashboard")
+
 
 
 
@@ -141,7 +109,3 @@ def signout(request):
         return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
-
-    # user_form = form_user
-    # print("m registarrti mhu ")
-    # return render(request, 'registration.html',{'user_form': user_form})
