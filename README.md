@@ -15,4 +15,37 @@ All ticket will be visible at admin portal except the completed one, admin can s
 
 # Picture
 
-![alt text](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/login.png?raw=true)
+Login Screen
+
+![Login Screen ](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/login.png?raw=true)
+
+Registeration Screen
+
+![Register Screen ](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/Register.png?raw=true)
+
+# User Screens
+
+Dashboard Screen
+
+![Dashboard Screen ](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/User_dashboard.png?raw=true)
+
+Raise New Ticket Screen
+
+![Raise new ticket Screen ](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/create_new_ticket.png?raw=true)
+
+Details of ticket Screen
+
+![Details Screen ](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/user_detail.png?raw=true)
+
+# Admin Screens
+
+Dashboard Screen
+
+![Dashboard Screen ](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/Admin_Dashboard.png?raw=true)
+
+Update Screen
+
+![Update ticket Screen ](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/Admin_update.png?raw=true)
+
+
+
