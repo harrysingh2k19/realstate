@@ -27,7 +27,7 @@ Registeration Screen
 
 Dashboard Screen
 
-![Dashboard Screen ](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/User_dashboard.png?raw=true)
+![Dashboard Screen ](https://github.com/harrysingh2k19/realstate/blob/main/RealStateTickets/templates/user_dashboard.png?raw=true)
 
 Raise New Ticket Screen
 
